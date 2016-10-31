@@ -1,0 +1,102 @@
+<html>
+
+<head>
+
+<style>
+
+.forum{
+border-style:solid;
+border-color:black;
+border-radius:30px;
+margin-top:75px;
+margin-left: 400px;
+font-family: "Caviar Dreams";
+margin-right:415px;
+animation-name: fadeIn;
+		animation-duration:1s;
+
+}
+
+table{
+margin-top: 25px;
+margin-left:15px;
+}
+
+.sub{
+font-size:1.2em;
+margin-left:35px;
+}
+
+.heading{
+font-size:3em;
+margin-left:100px;
+margin-top:10px;
+}
+
+.submit{
+marsgin-left:125px;
+}
+
+.terms{
+margin-left:10px;
+}
+
+@keyframes fadeIn{
+			0%{
+
+				margin-top:-50px;
+			}
+
+			100%{
+			margin-top:75px;
+			}
+		}
+
+.already{
+font-family: "Caviar Dreams";
+align:center;
+margin-left:485px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="forum">
+<div class="heading">Login</div>
+<br>
+<div class="sub">It's free and always will be</div>
+    <form action="/login" method="post">
+<table>
+    <tr>
+        <td>
+            Username:
+        </td>
+        <td colspan="2">
+            <input type="text" placeholder="Username" name="email">
+        </td>
+        </tr>
+    <tr>
+        <td>
+            Password:
+        </td>
+        <td colspan="2">
+            <input type="password" placeholder="Password" name="password">
+        </td>
+    </tr>
+
+
+</table>
+<br>
+<div class="terms">By clicking Login, you agree to our<br> <a href="#terms">Terms</a> and that you have read our <a href="#policy">Data Policy</a>, including our <a href="#cookie">Cookie Use</a>.<br><br>
+</div>
+
+<input type="Submit" class="btn btn-warning btn-lg" style='display: block;margin: auto;width: auto;'><br>
+    </form>
+</div>
+<div class="already">
+<br>New User?<br>Click Here to <a href="/signup">Sign Up</a>
+</div>
+</body>
+
+</html>

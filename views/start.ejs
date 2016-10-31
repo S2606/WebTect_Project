@@ -1,0 +1,94 @@
+<html>
+<head>
+<style>
+body{
+		
+		animation-name: example;
+			animation-duration: 7s;
+			animation-iteration-count: infinite;
+			font-family:"Caviar Dreams";
+			
+			text-align:center;
+			}
+			
+			@keyframes example {
+			0%   {background-color:B2DFDB; left:0px; top:0px;}
+			25%  {background-color:C5CAE9; left:200px; top:0px;}
+			50%  {background-color:B2DFDB; left:200px; top:200px;}
+			75%  {background-color:E6EE9C; left:0px; top:200px;}
+			100% {background-color:C5E1A5; left:0px; top:0px;}
+}
+
+.heading{
+margin-top:10px;
+font-size:5em;
+}
+
+.sub{
+margin-top:20px;
+font-size:3em;
+}
+
+
+.link a{
+border-style:solid;
+border-color:#009688;
+border-radius:50px;
+		
+text-decoration:none;
+margin-top:250px;
+background-color:#009688;
+color:white;
+padding:5px;
+font-weight:bold;
+}
+
+.link a:hover{
+border-style:solid;
+border-color:white;
+border-radius:30px;
+		
+background-color:white;
+padding:5px;
+color:#009688;
+font-weight:bold;
+}
+
+
+
+.total{
+animation-name: fadeIn;
+		animation-duration:1s;
+}
+
+@keyframes fadeIn{
+			0%{
+				
+				opacity:0;
+			}
+			
+			100%{
+			opacity:1;
+			}
+		}
+		
+.video{
+margin-top:25px;
+
+		
+}
+</style>
+</head>
+<body>
+<div class="video">
+<iframe width="1000" height="300" src="https://www.youtube.com/embed/dU1xS07N-FA" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="total">
+<div class="heading">Got a creative idea?</div>
+<div class="sub">Why not publish it today!</div><br><br>
+<div class="link"><a href="/signup">Start Now</a></div>
+
+</div>
+</body>
+
+</html>
