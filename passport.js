@@ -36,11 +36,9 @@ module.exports = function(passport) {
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'email',
             passwordField: 'password',
-            Firstnamefield: 'firstName',
-            Lastnamefield: 'lastName',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function (req, email, password, firstName, lastName, done) {
+        function (req, email, password,done) {
             // asynchronous
             // User.findOne wont fire unless data is sent back
             process.nextTick(function () {
@@ -56,22 +54,10 @@ module.exports = function(passport) {
                         return done(null,false,{"message" : "Already taken"});
                         //return "";
                     } else {
-
-                        // if there is no user with that email
-                        // create the user
-                        var newUser = new User();
-
-                        // set the user's local credentials
-                        newUser.local.email = email;
-                        newUser.local.password = newUser.generateHash(password);
-                        newUser.local.Firstname = firstName;
-                        newUser.local.LastName = lastName;
-                        // save the user
-                        newUser.save(function (err) {
-                            if (err)
-                                throw err;
-                            return done(null, newUser);
-                        });
+                        var newuser=new User();
+                        newuser.local.email=email;
+                        newuser.local.password=newuser.generateHash(password);
+                        newuser.save();
                     }
 
                 });
@@ -96,11 +82,11 @@ module.exports = function(passport) {
                     return done(err);
                 // if no user is found, return the message
                 if (!user)
-                    return done(null, false /*req.flash('loginMessage', 'No user found.')*/); // req.flash is the way to set flashdata using connect-flash
+                    return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
 
                 // if the user is found but the password is wrong
                 if (!user.validPassword(password))
-                    return done(null, false /*req.flash('loginMessage', 'Oops! Wrong password.')*/); // create the loginMessage and save it to session as flashdata
+                    return done(null, false ,req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
                 // all is well, return successful user
                 return done(null, user);
             });

@@ -78,7 +78,7 @@ legend{
 <body>
 
 <h1>Give your Project a first impression</h1>
-<form method="get">
+<form action="/project" method="get">
 <fieldset>
 <legend>Project details</legend>
 <table id="projectdetails" align="center">
@@ -112,7 +112,7 @@ legend{
 <tr><td></td><td></td></tr>
 <tr>
 <td>Help people recognise your project faster</td>
-<td><input type="file" name="projectimage"</td>
+<td><input type="file" name="projectimage"></td>
 </tr>
 <tr><td></td><td></td></tr>
 <tr>
@@ -124,7 +124,7 @@ legend{
 <td>Team mates</td>
 <td>Grant your project mates access to help with your project<br>
 <br>
-<a href="invite friends.html"><input type="button" value="Invite a team mate"></a>
+<a href="/invite_friends.ejs"><input type="button" value="Invite a team mate"></a>
 </td>
 </tr>
 <tr><td></td><td></td></tr>
@@ -135,6 +135,7 @@ legend{
 </center>
 </fieldset>
 </from>
+</form>
 </body>
 </html>
 

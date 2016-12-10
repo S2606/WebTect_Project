@@ -1,9 +1,11 @@
+//var Proj            = require('./Proj');
 module.exports = function(app, passport) {
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
-    app.get('/', function(req, res) {
+
+     app.get('/', function(req, res) {
         res.render('proyecto.ejs'); // load the starting file
     });
 
@@ -52,9 +54,8 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('afterloginstart.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+        res.render('afterloginstart.ejs');
+            //user : req.user // get the user out of session and pass to template);
     });
 
     // =====================================
@@ -66,9 +67,9 @@ module.exports = function(app, passport) {
     });
 
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/login', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        //failureFlash : true // allow flash messages
     }));
 
     app.post('/login', passport.authenticate('local-login', {
@@ -81,13 +82,53 @@ module.exports = function(app, passport) {
         res.render('afterloginnavbar.ejs');
     });
 
-    app.get('afterloginleftbar.ejs', function (req,res) {
+    app.get('/afterloginleftbar.ejs', function (req,res) {
         res.render('afterloginleftbar.ejs');
     });
 
-    app.get('afterloginrightbar.ejs', function (req, res) {
+    app.get('/afterloginrightbar.ejs', function (req, res) {
        res.render('afterloginrightbar.ejs');
     });
+
+    app.get('/afterlogin.ejs',function (req,res) {
+        res.render('afterlogin.ejs', {
+           user :req.user
+         });
+    });
+
+    app.get('/discover.ejs',function (req,res) {
+        res.render('discover.ejs');
+    });
+
+    app.get('/create_a_project.ejs', function (req,res) {
+       res.render('create_a_project.ejs');
+    });
+
+    /*app.get('/project', function (req,res) {
+       var dom=req.body.maindomain.value;
+       var tit=req.body.projecttitle;
+       var file=req.body.projectimage.value;
+       var des=req.body.projectdes;
+       var newProj = new Proj();
+        newProj.topicname=tit;
+        newProj.topicdes=des;
+        newProj.domain=dom;
+        newProj.img=file;
+        newProj.save();
+    });*/
+
+    app.get('/invite_friends.ejs', function (req,res) {
+        res.render('invite_friends.ejs');
+    });
+
+    app.get('/viewproject.ejs', function (req,res) {
+        res.render('viewproject.ejs');
+    });
+
+    app.get('/about', function (req,res) {
+       res.render('about.ejs');
+    });
+
 };
 
 // route middleware to make sure a user is logged in
@@ -98,5 +139,5 @@ function isLoggedIn(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
-    res.redirect('/start');
+    res.redirect('/');
 }

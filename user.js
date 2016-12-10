@@ -6,10 +6,11 @@ var userSchema = mongoose.Schema({
 
     local            : {
         email        : String,
-        password     : String,
-        FirstName    : String,
-        LastName     : String
-    }
+        password     : String
+    },
+
+
+
 });
 
 // methods ======================
